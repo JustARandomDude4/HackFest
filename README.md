@@ -43,8 +43,9 @@ https://arxiv.org/abs/2007.10912
 https://github.com/evidencebp/commit-classification
 
 
-Exploratory Data Analysis: In this step, we analyzed the "Github Commit Messages Dataset" for performing Exploratory Data Analysis (EDA) on a dataset containing information about Git commits in different repositories.
-Here's a breakdown of the code:
+*Exploratory Data Analysis: In this step, we analyzed the "Github Commit Messages Dataset" for performing Exploratory Data Analysis (EDA) on a dataset containing information about Git commits in different repositories.
+*Here's a breakdown of the code:
+```
 ustats = df.groupby('repo').nunique(): This groups the data by the "repo" column and calculates the number of unique values for each column. The result is stored in a new dataframe called "ustats".
 ustats = ustats.sort_values(by="message", ascending=False): This sorts the "ustats" dataframe by the "message" column in descending order.
 fig, (ax1,ax2) = plt.subplots(2,1, figsize=(18,8)): This creates a figure with two subplots of size 18x8. The subplots are stored in variables "ax1" and "ax2".
@@ -59,14 +60,15 @@ message_day = df.pivot_table(index='dday', columns='repo', values='message', agg
 message_day.drop('All')[100:-5].rolling(90)['All'].mean().plot(figsize=(20,6)): This plots a rolling average of the total number of commits per day (across all repositories), with a window size of 90 days. The first 100 rows and last 5 rows of the pivot table are dropped to remove outliers, and the plot is displayed with a figure size of 20x6.
 message_day.drop('All')[100:-5].rolling(30)['All'].mean().plot(figsize=(20,6)): This plots a rolling average of the total number of commits per day (across all repositories), with a window size of 30 days. The first 100 rows and last 5 rows of the pivot table are dropped to remove outliers, and the plot is displayed with a figure size of 20x6.
 message_day.drop('All')[100:-5].rolling(30)['torvalds/linux'].mean().plot(figsize=(20,6)): This plots a rolling average of the number of commits per day for the "torval
+```
 
-This contains lists of regular expressions, negation terms, modals, security terms, and documentation entities.
-The regular expressions are used for pattern matching and extracting information from text data. The regular expression file_scheme matches any file name that consists of one or more alphanumeric characters, underscores, asterisks, and dots, followed by a period and a file extension of 1 to 4 letters.
-The negation_terms list contains common words and contractions used to indicate negation in text, such as "aren't", "cannot", "didn't", "never", etc.
-The modals list contains modal verbs like "can", "could", "may", "might", "must", etc., which are used to express modalities in text.
-The security_terms list contains security-related terms like "attack", "credential(s)", "exploit", "security", etc., which are used to detect security-related issues in text.
-The documentation_entities list contains terms related to documentation like "README", "man pages", "Java docs", etc., which are used to identify documentation-related issues in text.
-Each list is defined as a Python list of strings containing regular expressions, words, or phrases, and the term_seperator variable contains a regular expression to separate terms in a given text.
+*This contains lists of regular expressions, negation terms, modals, security terms, and documentation entities.
+*The regular expressions are used for pattern matching and extracting information from text data. The regular expression file_scheme matches any file name that consists of one or more alphanumeric characters, underscores, asterisks, and dots, followed by a period and a file extension of 1 to 4 letters.
+*The negation_terms list contains common words and contractions used to indicate negation in text, such as "aren't", "cannot", "didn't", "never", etc.
+*The modals list contains modal verbs like "can", "could", "may", "might", "must", etc., which are used to express modalities in text.
+*The security_terms list contains security-related terms like "attack", "credential(s)", "exploit", "security", etc., which are used to detect security-related issues in text.
+*The documentation_entities list contains terms related to documentation like "README", "man pages", "Java docs", etc., which are used to identify documentation-related issues in text.
+*Each list is defined as a Python list of strings containing regular expressions, words, or phrases, and the term_seperator variable contains a regular expression to separate terms in a given text.
 
 
 ## Contributing 💡
